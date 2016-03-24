@@ -1,0 +1,66 @@
+snippet relcc
+	export default Relay.createContainer(${0:Component}, {
+		fragments: {
+			$(1:relfrag)
+		},
+	});
+snippet relfrag
+	${0:propName}: () => Relay.QL\`
+		fragment on ${1} {
+			${2},
+		}
+	\`,
+snippet relfragconn
+	${1}: () => Relay.QL\`
+		fragment on _${2}Connection {
+			${3:count,}
+			edges {
+				node {
+					${4:id},
+				}
+			}
+		}
+	\`,
+snippet relgf
+	${1:ChildComponent}.getFragment('${2}')
+snippet relmut
+	import Relay from 'react-relay';
+
+	export default class ${1}Mutation extends Relay.Mutation {
+		getMutation() {
+			return Relay.QL\`mutation{ ${2} }\`;
+		}
+
+		getVariables() {
+			return {
+				${3:id}: ${4:this.props.id},
+			};
+		}
+
+		getFatQuery() {
+			return Relay.QL\`
+				fragment on ${5}Payload {
+					${6} {
+						${7}
+					}
+				}
+			\`;
+		}
+
+		getConfigs() {
+			return [{
+				type: '${8:FIELDS_CHANGE}', // i.e.: 'FIELDS_CHANGE', 'NODE_DELETE', 'RANGE_ADD', 'RANGE_DELETE'
+				fieldIDs: {
+					${9:id}: ${10:this.props.id},
+				},
+			}];
+		}
+
+		getOptimisticResponse() {
+			return {
+				${11:id}: this.props.${12:id},
+				},
+			};
+		}
+	};
+
