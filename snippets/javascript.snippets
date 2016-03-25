@@ -62,5 +62,10 @@ snippet relmut
 			};
 		}
 	};
-
-
+snippet relsu
+	Relay.Store.update(
+		new Change${1}Mutation({
+			${2:id}: this.props.${3},
+			${4}: ${5},
+		})
+	);
