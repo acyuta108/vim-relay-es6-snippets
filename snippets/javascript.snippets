@@ -1,5 +1,5 @@
 snippet relcc
-	export default Relay.createContainer(${1:Component}, {
+	export default Relay.createContainer(${1:`vim_snippets#Filename()`}, {
 		fragments: {
 			${2:relfrag}
 		},
@@ -26,7 +26,7 @@ snippet relgf
 snippet relmut
 	import Relay from 'react-relay';
 
-	export default class ${1}Mutation extends Relay.Mutation {
+	export default class ${1:`vim_snippets#Filename()`} extends Relay.Mutation {
 		getMutation() {
 			return Relay.QL\`mutation{ ${2} }\`;
 		}
