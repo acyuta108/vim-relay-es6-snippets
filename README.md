@@ -43,4 +43,17 @@ export default Relay.createContainer(Component, {
 });
 ```
 
-Check `snippets/javascript.snippets` to see the full list.
+Current list of snippets
+------------------------
+
+__relcc__ Relay.createContainer
+
+__relmut__ Relay.Mutation
+
+__relgf__ getFragment
+
+__relfrag__ fragment
+
+__relfragconn__ fragment on connection
+
+__relsu__ Relay.Store.update
